@@ -1,4 +1,4 @@
-package gkyrqy.springbootdubboserver.domain;
+package gkyrqy.springbootdubboapi.domain;
 
 import java.io.Serializable;
 
@@ -10,6 +10,17 @@ import java.io.Serializable;
 public class City implements Serializable {
 
     private static final long serialVersionUID = -1L;
+
+    public City() {
+
+    }
+
+    public City(Long id, Long provinceId, String cityName, String description) {
+        this.id = id;
+        this.provinceId = provinceId;
+        this.cityName = cityName;
+        this.description = description;
+    }
 
     /**
      * 城市编号
@@ -30,16 +41,6 @@ public class City implements Serializable {
      * 描述
      */
     private String description;
-
-    public City() {
-    }
-
-    public City(Long id, Long provinceId, String cityName, String description) {
-        this.id = id;
-        this.provinceId = provinceId;
-        this.cityName = cityName;
-        this.description = description;
-    }
 
     public Long getId() {
         return id;
@@ -72,4 +73,15 @@ public class City implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", provinceId=" + provinceId +
+                ", cityName='" + cityName + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
+
