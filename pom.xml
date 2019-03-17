@@ -11,6 +11,9 @@
     <modules>
         <module>spring</module>
         <module>dubbo</module>
+        <module>springboot</module>
+        <module>springboot-dubbo-client</module>
+        <module>springboot-dubbo-server</module>
     </modules>
 
 
