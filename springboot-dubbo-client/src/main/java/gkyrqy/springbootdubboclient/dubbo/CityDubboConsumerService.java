@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CityDubboConsumerService {
 
-    @Reference
+    @Reference(registry = "N/A")
     CityDubboService cityDubboService;
 
     public void printCity() {
