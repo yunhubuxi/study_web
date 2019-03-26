@@ -1,21 +1,18 @@
 package gkyrqy.springboot;
 
-import org.springframework.beans.factory.Aware;
+import author.AuthorServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class SpringbootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootApplication.class, args);
-        AbstractApplicationContext abstractApplicationContext;
-        Aware aware;
-        ApplicationContextAware applicationContextAware;
-        ApplicationListener applicationListener;
+        ApplicationContext applicationContext = SpringApplication.run(SpringbootApplication.class, args);
+        AuthorServer authorServer = applicationContext.getBean(AuthorServer.class);
+        System.out.println(authorServer.getAuthor());
     }
+
 
 }
