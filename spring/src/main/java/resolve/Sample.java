@@ -1,6 +1,6 @@
-package custom.resolve;
+package resolve;
 
-import custom.resolve.model.User;
+import resolve.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

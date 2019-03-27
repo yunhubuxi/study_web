@@ -1,6 +1,6 @@
-package custom.resolve;
+package resolve;
 
-import custom.resolve.model.User;
+import resolve.model.User;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.util.StringUtils;

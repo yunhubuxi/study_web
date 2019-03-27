@@ -1,4 +1,4 @@
-package custom.resolve;
+package resolve;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
