@@ -1,3 +1,5 @@
+package producer;
+
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
@@ -9,7 +11,7 @@ public class SyncProducer {
         DefaultMQProducer producer = new
                 DefaultMQProducer("please_rename_unique_group_name");
         // Specify name server addresses.
-        producer.setNamesrvAddr("192.168.80.133:9876");
+        producer.setNamesrvAddr("192.168.228.130:9876");
         //Launch the instance.
         producer.start();
         for (int i = 0; i < 100; i++) {
