@@ -24,8 +24,5 @@
         <module>springboot-dubbo-api</module>
         <module>rocketMQ</module>
         <module>springboot-action-autoconfig</module>
-        <module>mybatis</module>
-        <module>mybatis</module>
-        <module>zookeeper</module>
     </modules>
 </project>
