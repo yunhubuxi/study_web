@@ -26,27 +26,38 @@
             <version>${dubbo-spring-boot}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.zookeeper</groupId>-->
-<!--            <artifactId>zookeeper</artifactId>-->
-<!--            <version>3.4.8</version>-->
-<!--        </dependency>-->
         <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.8</version>
         </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.9</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.sgroschupf</groupId>-->
+        <!--            <artifactId>zkclient</artifactId>-->
+        <!--            <version>0.1</version>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>log4j</groupId>-->
+        <!--                    <artifactId>log4j</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>gkyrqy</groupId>
             <artifactId>springboot-dubbo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.11.1</version>
         </dependency>
     </dependencies>
 
