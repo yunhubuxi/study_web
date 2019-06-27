@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  * 3,如果不在一个配置文件里，后注册的默认会替换掉先注册的
  */
 @SpringBootApplication
-@RestController
 public class SpringbootApplication {
 
     public static void main(String[] args) {
@@ -38,9 +37,6 @@ public class SpringbootApplication {
 
     }
 
-    @RequestMapping("aaa")
-    public String test() {
-        return "aaa";
-    }
+
 
 }
