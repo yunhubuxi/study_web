@@ -1,4 +1,4 @@
-package resolve.model;
+package resolve;
 
 public class User {
     private String userName;
