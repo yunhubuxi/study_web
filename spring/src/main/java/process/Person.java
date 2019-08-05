@@ -1,11 +1,8 @@
 package process;
 
+import org.hamcrest.Factory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContextAware;
 
 /**
@@ -14,11 +11,21 @@ import org.springframework.context.ApplicationContextAware;
  * 同时有2个方法，对应配置文件中<bean>的init-method和destroy-method
  */
 public class Person implements BeanFactoryAware, BeanNameAware,
-        InitializingBean, DisposableBean {
+        InitializingBean, DisposableBean, FactoryBean {
 
     private String name;
     private String address;
     private long phone;
+
+    @Override
+    public Object getObject() throws Exception {
+        return new Person();
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return Person.class;
+    }
 
     private BeanFactory beanFactory;
     private String beanName;
