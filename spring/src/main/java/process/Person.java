@@ -1,9 +1,7 @@
 package process;
 
-import org.hamcrest.Factory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
-import org.springframework.context.ApplicationContextAware;
 
 /**
  * 首先是一个简单的Spring Bean，调用Bean自身的方法和Bean级生命周期接口方法
