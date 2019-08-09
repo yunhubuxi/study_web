@@ -20,7 +20,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object arg0, String arg1)
             throws BeansException {
         System.out
-                .println("BeanPostProcessor接口方法postProcessAfterInitialization对属性进行更改！");
+                .println("【BeanPostProcessor接口】的方法postProcessAfterInitialization对属性进行更改！");
         return arg0;
     }
 
@@ -28,7 +28,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object arg0, String arg1)
             throws BeansException {
         System.out
-                .println("BeanPostProcessor接口方法postProcessBeforeInitialization对属性进行更改！");
+                .println("【BeanPostProcessor接口】的方法postProcessBeforeInitialization对属性进行更改！");
         return arg0;
     }
 }

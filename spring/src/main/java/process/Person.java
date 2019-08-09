@@ -1,12 +1,7 @@
 package process;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.beans.factory.*;
 
 /**
  * 首先是一个简单的Spring Bean，调用Bean自身的方法和Bean级生命周期接口方法
@@ -14,11 +9,21 @@ import org.springframework.context.ApplicationContextAware;
  * 同时有2个方法，对应配置文件中<bean>的init-method和destroy-method
  */
 public class Person implements BeanFactoryAware, BeanNameAware,
-        InitializingBean, DisposableBean {
+        InitializingBean, DisposableBean, FactoryBean {
 
     private String name;
     private String address;
     private long phone;
+
+    @Override
+    public Object getObject() throws Exception {
+        return new Person();
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return Person.class;
+    }
 
     private BeanFactory beanFactory;
     private String beanName;
@@ -82,15 +87,16 @@ public class Person implements BeanFactoryAware, BeanNameAware,
                 .println("【InitializingBean接口】调用InitializingBean.afterPropertiesSet()");
     }
 
-    // 这是DiposibleBean接口方法
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("【DiposibleBean接口】调用DiposibleBean.destory()");
-    }
 
     // 通过<bean>的init-method属性指定的初始化方法
     public void myInit() {
         System.out.println("【init-method】调用<bean>的init-method属性指定的初始化方法");
+    }
+
+    // 这是DiposibleBean接口方法
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("【DiposibleBean接口】调用DiposibleBean.destory()");
     }
 
     // 通过<bean>的destroy-method属性指定的初始化方法

@@ -25,16 +25,16 @@ public class MyInstantiationAwareBeanPostProcessor extends
     public Object postProcessBeforeInstantiation(Class beanClass,
                                                  String beanName) throws BeansException {
         System.out
-                .println("InstantiationAwareBeanPostProcessor调用postProcessBeforeInstantiation方法");
+                .println("【InstantiationAwareBeanPostProcessor】调用postProcessBeforeInstantiation方法");
         return null;
     }
 
-    // 接口方法、实例化Bean之后调用
+    // 接口方法、实例化，并且初始化Bean之后调用
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName)
             throws BeansException {
         System.out
-                .println("InstantiationAwareBeanPostProcessor调用postProcessAfterInitialization方法");
+                .println("【InstantiationAwareBeanPostProcessor】调用postProcessAfterInitialization方法");
         return bean;
     }
 
@@ -44,7 +44,7 @@ public class MyInstantiationAwareBeanPostProcessor extends
                                                     PropertyDescriptor[] pds, Object bean, String beanName)
             throws BeansException {
         System.out
-                .println("InstantiationAwareBeanPostProcessor调用postProcessPropertyValues方法");
+                .println("【InstantiationAwareBeanPostProcessor】调用postProcessPropertyValues方法");
         return pvs;
     }
 }
