@@ -11,7 +11,8 @@
     <bean id="beanFactoryPostProcessor" class="process.MyBeanFactoryPostProcessor">
     </bean>
 
-    <bean id="person" class="process.Person" init-method="myInit"
-          destroy-method="myDestory" scope="singleton" p:name="张三" p:address="广州"
-          p:phone="15900000000" />
+    <!--<bean id="person" class="process.Person" init-method="myInit"-->
+          <!--destroy-method="myDestory" scope="singleton" p:name="张三" p:address="广州"-->
+          <!--p:phone="15900000000" />-->
+    <bean id="FactoryBeanPersonTest" class="process.FactoryBeanPersonTest"/>
 </beans>
