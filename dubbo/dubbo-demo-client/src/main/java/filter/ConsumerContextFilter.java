@@ -11,7 +11,7 @@ public class ConsumerContextFilter implements Filter {
     }
 
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        String token = "bttMis5bDJNTEFXZldtek1wUnVKekh6M3hrTno4VjZqcjF0Zy9UREdhZVNKSnNOaHZTdk9GdWIyNGlhdHp4eGk3NTNGb0NOSklSTTBzdlhsZTFiQjBhNzNFckJlQ1ViRFZSTFJyNGFLMWpxbTA9__1568877680424";
+        String token = "bttcG5VU0t1ZVg2bmtiUzc5di9FbitoU003UDlxNU4rVzM0SWlaSmkxQnU1TDd2WURhZC9TRUJnWFlmN1g3bWQ2Y3hNRC81RDFHMG5jc0NsYlVwb0RMUEhFckJlQ1ViRFZSTFJyNGFLMWpxbTA9__1569320869861";
         RpcContext.getContext().setAttachment("rpcToken", token);
         return invoker.invoke(invocation);
     }
