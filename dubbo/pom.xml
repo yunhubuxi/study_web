@@ -28,11 +28,6 @@
             <artifactId>uretail-common-core</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.yonyoucloud</groupId>
-            <artifactId>engineering-data-service</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 

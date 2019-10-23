@@ -17,9 +17,9 @@ public class BeanLifeCycle {
         // ((ClassPathXmlApplicationContext)factory).registerShutdownHook();
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("springBeanTest/beans.xml");
         System.out.println("===================容器初始化成功===================");
-        Person person = applicationContext.getBean("person", Person.class);
-        System.out.println(person);
-        System.out.println("===================现在开始关闭容器===================");
+        // Person person = applicationContext.getBean("person", Person.class);
+        // System.out.println(person);
+        // System.out.println("===================现在开始关闭容器===================");
         ((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
     }
 }
