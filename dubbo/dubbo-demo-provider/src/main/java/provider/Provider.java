@@ -1,5 +1,6 @@
 package provider;
 
+import api.DemoService;
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.config.ServiceConfig;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

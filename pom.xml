@@ -24,5 +24,6 @@
         <module>springboot-dubbo-api</module>
         <module>rocketMQ</module>
         <module>springboot-action-autoconfig</module>
+        <module>springcloud</module>
     </modules>
 </project>
