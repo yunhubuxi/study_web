@@ -16,8 +16,11 @@
  */
 package api;
 
+import java.util.Map;
+
 public interface DemoService {
 
     String sayHello(String name);
+    Map sayHello(Map map);
 
 }
