@@ -7,10 +7,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * 注册dubbo服务
+ *
  * @Component注解和@Service注解必须都有
  */
 @Component
-@Service(version = "1.0.0", interfaceClass = CityDubboService.class)
+@Service(version = "1.0.0", group = "gkyrq")
 public class CityDubboServiceImpl implements CityDubboService {
 
     @Override

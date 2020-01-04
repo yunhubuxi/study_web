@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-@EnableDubboConfiguration
 @EnableDubbo
 public class SpringbootDubboClientApplication {
 
