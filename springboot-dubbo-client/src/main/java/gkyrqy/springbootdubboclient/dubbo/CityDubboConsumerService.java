@@ -13,12 +13,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class CityDubboConsumerService {
 
-    @Reference(registry = "zookeeper://172.20.56.136:2181")
+    // 因为提供者定义了version，所以消费者必须定义version，否则引用不到
+    @Reference(group = "gkyrq", version = "1.0.0", interfaceClass = CityDubboService.class)
     CityDubboService cityDubboService;
 
     public void printCity() {
         String cityName = "温岭";
         City city = cityDubboService.findCityByName(cityName);
         System.out.println(city.toString());
+    }
+
+    public CityDubboService getCityDubboService() {
+        return cityDubboService;
     }
 }
