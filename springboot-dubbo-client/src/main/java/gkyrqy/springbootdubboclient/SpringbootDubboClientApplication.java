@@ -1,16 +1,16 @@
 package gkyrqy.springbootdubboclient;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.config.spring.ReferenceBean;
-import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import gkyrqy.springbootdubboapi.api.CityDubboService;
 import gkyrqy.springbootdubboclient.dubbo.CityDubboConsumerService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+@EnableDubbo
 @SpringBootApplication
-@EnableDubboConfiguration
+// @EnableDubboConfiguration
 public class SpringbootDubboClientApplication {
 
     @Reference(group = "gkyrq",version = "1.0.0")
