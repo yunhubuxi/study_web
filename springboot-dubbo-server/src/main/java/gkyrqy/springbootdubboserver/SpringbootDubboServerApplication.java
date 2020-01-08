@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * EnableDubboConfig和EnableDubboConfiguration是不同的包中的不同的注解，作用也不一样
  * 使用EnableDubbo是使用注解驱动，但不是自动装配，需要自己制定扫描的包，怎样装配application，registry还没有搞清楚
  */
-// @EnableDubbo
+
 @SpringBootApplication
 @EnableDubboConfiguration
 public class SpringbootDubboServerApplication {
