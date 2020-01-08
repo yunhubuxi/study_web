@@ -11,7 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Sample {
+/**
+ * 这个类是要测试duboo的序列化
+ */
+public class TestOne {
     public static void main(String[] args) {
         Map map = new HashMap();
 
@@ -35,8 +38,6 @@ public class Sample {
         map.put("user", user1);
         map.put("userList", userList);
 
-
-
         People people1 = new People();
         people1.setName("李四1");
         people1.setAge(18);
@@ -44,7 +45,6 @@ public class Sample {
         People people2 = new People();
         people2.setName("李四2");
         people2.setAge(18);
-
 
         People people3 = new People();
         people3.setName("李四3");
@@ -62,7 +62,6 @@ public class Sample {
         pager.setPageSize(10);
         pager.setPageIndex(2);
         map.put("pager", pager);
-
 
         String aaa = JSONObject.toJSONString(map);
         Object bbb = JSONObject.parseObject(aaa,Feature.IgnoreAutoType);
