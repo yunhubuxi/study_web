@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 
 @EnableDubbo
 @SpringBootApplication
-// @EnableDubboConfiguration
 public class SpringbootDubboClientApplication {
 
     @Reference(group = "gkyrq",version = "1.0.0")
