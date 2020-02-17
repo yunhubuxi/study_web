@@ -2,14 +2,11 @@ package gkyrqy.springboot;
 
 import author.AuthorServer;
 import gkyrqy.springboot.interface1.Demo;
-
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -33,10 +30,5 @@ public class SpringbootApplication {
                 beanDefinitionBuilder.getBeanDefinition());
         Demo demo = (Demo)applicationContext.getBean("demoA");
         demo.sayHello();
-
-
     }
-
-
-
 }
