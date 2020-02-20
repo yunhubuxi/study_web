@@ -25,5 +25,7 @@
         <module>rocketMQ</module>
         <module>springboot-action-autoconfig</module>
         <module>springcloud</module>
+        <module>netty</module>
+        <module>jetty</module>
     </modules>
 </project>
