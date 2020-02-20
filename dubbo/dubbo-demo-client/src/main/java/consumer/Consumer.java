@@ -63,10 +63,10 @@ public class Consumer {
         // List<BizObject> queryResultList = billQueryService.query("ed.material.Material", querySchema.toString());
         // System.out.println(queryResultList);
 
-        testForGongYingLian(materialQueryService);
+        test(materialQueryService);
     }
 
-    private static void testForGongYingLian(IMaterialQueryService materialQueryService) throws Exception{
+    private static void test(IMaterialQueryService materialQueryService) throws Exception{
         Map<String, String> stringStringMap = materialQueryService.queryMaterialById(1453393419079936L);
         System.out.println(stringStringMap.toString());
 
