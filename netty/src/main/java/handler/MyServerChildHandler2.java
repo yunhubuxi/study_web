@@ -22,7 +22,7 @@ public class MyServerChildHandler2 extends ChannelHandlerAdapter {
         //读取客户端发来的信息
         ByteBuf m = (ByteBuf) msg; // ByteBuf是netty提供的
         System.out.println("MyServerChildHandler2：收到的消息 === " + m.toString(CharsetUtil.UTF_8));
-        TimeUnit.SECONDS.sleep(50);
+        // TimeUnit.SECONDS.sleep(50);
         //2两种打印信息的方法。都可以实现
        /* byte[] b=new byte[m.readableBytes()];
         m.readBytes(b);

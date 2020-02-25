@@ -41,8 +41,10 @@ public class HttpHelloWorldServerHandler extends SimpleChannelInboundHandler<Htt
             HttpRequest req = (HttpRequest) msg;
 
             boolean keepAlive = HttpUtil.isKeepAlive(req);
-            FullHttpResponse response = new DefaultFullHttpResponse(req.protocolVersion(), OK,
+            FullHttpResponse response_old = new DefaultFullHttpResponse(req.protocolVersion(), OK,
                                                                     Unpooled.wrappedBuffer(CONTENT));
+            FullHttpResponse response = new DefaultFullHttpResponse(req.protocolVersion(), OK,
+                    Unpooled.wrappedBuffer("HELLOWORLD.....".getBytes()));
             response.headers()
                     .set(CONTENT_TYPE, TEXT_PLAIN)
                     .setInt(CONTENT_LENGTH, response.content().readableBytes());

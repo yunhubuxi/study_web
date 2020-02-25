@@ -14,6 +14,7 @@
  */
 package http.helloworld;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -25,8 +26,11 @@ import io.netty.handler.codec.http2.*;
 import io.netty.handler.ssl.ApplicationProtocolNames;
 import io.netty.handler.ssl.ApplicationProtocolNegotiationHandler;
 import io.netty.handler.ssl.SslContext;
+import io.netty.util.CharsetUtil;
+import io.netty.util.ReferenceCountUtil;
 
 import java.net.InetSocketAddress;
+import java.time.LocalDateTime;
 
 import static io.netty.handler.logging.LogLevel.INFO;
 
@@ -114,9 +118,11 @@ public class Http2ClientInitializer extends ChannelInitializer<SocketChannel> {
         HttpClientUpgradeHandler upgradeHandler = new HttpClientUpgradeHandler(sourceCodec, upgradeCodec, 65536);
 
         ch.pipeline().addLast(sourceCodec,
-                              upgradeHandler,
-                              new UpgradeRequestHandler(),
-                              new UserEventLogger());
+                upgradeHandler,
+                new UpgradeRequestHandler(),
+                new UserEventLogger(),
+                // new HttpServerCodec(),
+                new MyHandler());
     }
 
     /**
@@ -156,6 +162,35 @@ public class Http2ClientInitializer extends ChannelInitializer<SocketChannel> {
         public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
             System.out.println("User Event Triggered: " + evt);
             ctx.fireUserEventTriggered(evt);
+        }
+    }
+
+    /**
+     * Class that logs any User Events triggered on this channel.
+     */
+    private static class MyHandler extends ChannelInboundHandlerAdapter {
+        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+            try {
+                //读取服务端发来的信息
+                // ByteBuf是netty提供的
+                // ByteBuf m = (ByteBuf) msg;
+                // DefaultFullHttpResponse response = (DefaultFullHttpResponse) msg;
+                // System.out.println("==== client ==== "+response.content().toString(CharsetUtil.UTF_8));
+                // System.err.println(response.toString());
+                System.out.println(LocalDateTime.now().toString());
+                System.out.println("From Server" + msg.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                //当没有写操作的时候要把msg给清空。如果有写操作，就不用清空，因为写操作会自动把msg清空。这是netty的特性。
+                ReferenceCountUtil.release(msg);
+            }
+
+        }
+
+        public void channelActive(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("channelActive");
+            ctx.fireChannelActive();
         }
     }
 }

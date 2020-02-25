@@ -38,7 +38,7 @@ public class ClientA {
         });
 
         try {
-            ChannelFuture f = b.connect("127.0.0.1", 8889).sync();
+            ChannelFuture f = b.connect("127.0.0.1", 8080).sync();
             //向服务端发送信息
             f.channel().writeAndFlush(Unpooled.copiedBuffer("ClientA".getBytes()));
 
