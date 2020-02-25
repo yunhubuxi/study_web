@@ -13,6 +13,4 @@
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     <dubbo:reference id="demoService" interface="api.DemoService" url="dubbo://localhost:20880"/>
-    <dubbo:reference id="billQueryService" group="gaoyqf" interface="com.yonyoucloud.uretail.api.IBillQueryService" url="dubbo://localhost:20893"/>
-    <dubbo:reference id="materialQueryService" group="gaoyqf" interface="com.yonyoucloud.manufacturing.service.material.IMaterialQueryService" url="dubbo://localhost:20894"/>
 </beans>
