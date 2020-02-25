@@ -37,6 +37,10 @@ public class Consumer {
         // 获取远程服务代理
         DemoService demoService = (DemoService) context.getBean("demoService");
         // 执行远程方法
+        Map map = new HashMap();
+        map.put("111", "bbb");
+        map.put("222", "bbb");
+        Map ddd = demoService.sayHello(map);
         String hello = demoService.sayHello("world");
         // 显示调用结果
         System.out.println(hello);
