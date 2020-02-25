@@ -44,7 +44,14 @@ public class Consumer {
         String hello = demoService.sayHello("world");
         // 显示调用结果
         System.out.println(hello);
-
+        test(materialQueryService);
     }
 
+    private static void test(IMaterialQueryService materialQueryService) throws Exception{
+        Map<String, String> stringStringMap = materialQueryService.queryMaterialById(1453393419079936L);
+        System.out.println(stringStringMap.toString());
+
+        List<Map<String, String>> mapList = materialQueryService.queryMaterialByProductId(1453714209771776L);
+        System.out.println(mapList.toString());
+    }
 }
