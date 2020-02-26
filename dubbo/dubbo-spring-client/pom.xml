@@ -9,12 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo-demo-provider</artifactId>
+    <artifactId>dubbo-spring-client</artifactId>
     <dependencies>
         <dependency>
             <groupId>gkyrqy</groupId>
-            <artifactId>dubbo-demo-api</artifactId>
+            <artifactId>dubbo-spring-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 </project>
