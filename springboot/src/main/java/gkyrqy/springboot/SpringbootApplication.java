@@ -6,6 +6,7 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 
 
@@ -16,6 +17,7 @@ import org.springframework.context.ApplicationContext;
  * 3,如果不在一个配置文件里，后注册的默认会替换掉先注册的
  */
 @SpringBootApplication
+@ServletComponentScan
 public class SpringbootApplication {
 
     public static void main(String[] args) {

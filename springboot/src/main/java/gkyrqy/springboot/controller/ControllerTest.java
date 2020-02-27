@@ -18,7 +18,7 @@ public class ControllerTest {
 
     @RequestMapping("/aaa")
     public String test() {
-        System.out.println(test+"ControllerTest");
+        System.out.println(ControllerTest.class.toString());
         demo.sayHello();
         return "aaa";
     }

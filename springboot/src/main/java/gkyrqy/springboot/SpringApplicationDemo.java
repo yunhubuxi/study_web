@@ -1,4 +1,4 @@
-package gkyrqy.springboot.springapplication;
+package gkyrqy.springboot;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
