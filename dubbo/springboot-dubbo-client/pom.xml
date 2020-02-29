@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
        <groupId>gkyrqy</groupId>
-        <artifactId>study</artifactId>
+        <artifactId>dubbo</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>gkyrqy</groupId>
