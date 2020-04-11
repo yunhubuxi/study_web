@@ -9,7 +9,7 @@ public class DemoA implements Demo {
     private String test;
 
     public void sayHello() {
-        System.out.println(test + DemoA.class);
+        System.out.println(this.getClass());
         System.out.println("hello, I an Person");
     }
 }

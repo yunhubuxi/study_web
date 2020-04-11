@@ -14,4 +14,5 @@ public class ConfigurationDemo2 {
         person.setAge(12);
         return person;
     }
+
 }
