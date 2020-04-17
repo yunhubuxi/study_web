@@ -32,8 +32,7 @@ public class KafkaMessageStreaming {
         Properties props = new Properties();
         // props.setProperty("bootstrap.servers", "10.47.85.158:9092");
         props.setProperty("bootstrap.servers", "192.168.228.135:9092");
-        props.setProperty("group.id", "flink-group");
-
+        // props.setProperty("group.id", "flink-group");
         //    args[0] = "test-0921";  //传入的是kafka中的topic
         FlinkKafkaConsumer010<String> consumer =
             new FlinkKafkaConsumer010<>("test", new SimpleStringSchema(), props);

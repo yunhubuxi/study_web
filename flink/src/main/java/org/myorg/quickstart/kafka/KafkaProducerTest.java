@@ -5,9 +5,9 @@ import org.apache.kafka.clients.producer.*;
 import java.util.Properties;
 
 /**
- * @Description    KafkaProducerTest 发送Kafka消息
- * @Author         0262000099 Hengtai Nie
- * @CreateDate     2018/9/21 11:29
+ * @Description KafkaProducerTest 发送Kafka消息
+ * @Author 0262000099 Hengtai Nie
+ * @CreateDate 2018/9/21 11:29
  */
 public class KafkaProducerTest {
 
@@ -32,6 +32,8 @@ public class KafkaProducerTest {
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (exception != null) {
                         System.out.println("Failed to send message with exception " + exception);
+                    } else {
+                        System.out.println(metadata.toString());
                     }
                 }
             });
