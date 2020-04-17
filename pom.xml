@@ -24,5 +24,6 @@
         <module>springboot-action-autoconfig</module>
         <module>springboot-mybatis</module>
         <module>springcloud</module>
+        <module>flink</module>
     </modules>
 </project>
