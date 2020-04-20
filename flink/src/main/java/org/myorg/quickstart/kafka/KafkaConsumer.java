@@ -7,6 +7,9 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 
 import java.util.Properties;
 
+/**
+ * 消费kafka消息
+ */
 public class KafkaConsumer {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
