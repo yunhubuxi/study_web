@@ -29,7 +29,7 @@ public class SocketWindowWordCount {
         // String filePath = "D:\\测试.txt";
         // DataStream<String> text = env.readTextFile(filePath);
         //获取连接socket输入数据
-        DataStream<String> text = env.socketTextStream("192.168.228.135", 9000,"\n");
+        DataStream<String> text = env.socketTextStream("192.168.228.135", 9000, "\n");
         // DataStream<String> text = env.fromCollection(Arrays.asList("fff", "bbbbb"));
 
 
@@ -51,7 +51,7 @@ public class SocketWindowWordCount {
         //         // windowCounts.print().setParallelism(1);
 
         /**
-         * 最简单的String追剧字符串
+         * 最简单的String追加字符串
          */
         // DataStream<String> stringAppend = text.flatMap(new FlatMapFunction<String, String>() {
         //     @Override
@@ -76,7 +76,7 @@ public class SocketWindowWordCount {
             .keyBy("word")
             .timeWindow(Time.seconds(10), Time.seconds(1))
             .sum("word");
-                windowCounts.print().setParallelism(1);
+        windowCounts.print().setParallelism(1);
 
         env.execute("Socket Window WordCount");
 

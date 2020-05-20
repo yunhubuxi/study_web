@@ -18,7 +18,23 @@
 
 package org.myorg.quickstart;
 
+import org.apache.flink.api.common.functions.FlatMapFunction;
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.tuple.Tuple3;
+import org.apache.flink.streaming.api.TimeCharacteristic;
+import org.apache.flink.streaming.api.datastream.DataStreamSink;
+import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
+import org.apache.flink.streaming.api.watermark.Watermark;
+import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.triggers.ContinuousEventTimeTrigger;
+import org.apache.flink.util.Collector;
+
+import javax.annotation.Nullable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Skeleton for a Flink Streaming Job.
@@ -34,30 +50,51 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  */
 public class StreamingJob {
 
-	public static void mainaaa(String[] args) throws Exception {
-		// set up the streaming execution environment
+	public static void main(String[] args) throws Exception {
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-		/*
-		 * Here, you can start creating your execution plan for Flink.
-		 *
-		 * Start with getting some data from the environment, like
-		 * 	env.readTextFile(textPath);
-		 *
-		 * then, transform the resulting DataStream<String> using operations
-		 * like
-		 * 	.filter()
-		 * 	.flatMap()
-		 * 	.join()
-		 * 	.coGroup()
-		 *
-		 * and many more.
-		 * Have a look at the programming guide for the Java API:
-		 *
-		 * http://flink.apache.org/docs/latest/apis/streaming/index.html
-		 *
-		 */
+		DataStreamSource<String> stream = env.socketTextStream("192.168.228.135", 9000);
+		DataStreamSink<Tuple3<String, String, Integer>> print = stream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
+			private Long currentMaxTimestamp = 3000L;
+			private Long maxOutOfOrderness = 3000L;
 
+			@Override
+			public long extractTimestamp(String element, long previousElementTimestamp) {
+				Long timestamp = System.currentTimeMillis();
+				currentMaxTimestamp = Math.max(currentMaxTimestamp, timestamp);
+				return timestamp;
+			}
+
+			@Nullable
+			@Override
+			public Watermark getCurrentWatermark() {
+				return new Watermark(currentMaxTimestamp - maxOutOfOrderness);
+			}
+
+		}).flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
+			@Override
+			public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
+				String[] tokens = value.toLowerCase().split(("\\W+"));
+				for (String token : tokens) {
+					if (token.length() > 0) {
+						out.collect(Tuple2.of(token, 1));
+					}
+				}
+			}
+		})
+			.keyBy(0)
+			.timeWindow(Time.seconds(60))
+			.trigger(ContinuousEventTimeTrigger.of(Time.seconds(10)))
+			.sum(1)
+			.map(new MapFunction<Tuple2<String, Integer>, Tuple3<String, String, Integer>>() {
+				@Override
+				public Tuple3<String, String, Integer> map(Tuple2<String, Integer> value) throws Exception {
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String format = simpleDateFormat.format(new Date());
+					return Tuple3.of(value.f0, format, value.f1);
+				}
+			}).print();
 		// execute program
 		env.execute("Flink Streaming Java API Skeleton");
 	}
