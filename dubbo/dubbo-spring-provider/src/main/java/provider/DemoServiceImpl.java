@@ -8,6 +8,7 @@ import java.util.Map;
 public class DemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {
+        System.out.println(this.hashCode());
         name = "aaa";
         return "Hello " + name;
     }
