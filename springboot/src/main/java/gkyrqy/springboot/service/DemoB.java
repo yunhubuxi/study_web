@@ -1,0 +1,23 @@
+package gkyrqy.springboot.service;
+
+import gkyrqy.springboot.interface1.Demo;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DemoB implements Demo, BeanNameAware {
+
+    @Override
+    public void sayHello() {
+    }
+
+    @Override
+    public void setBeanName(String s) {
+        System.out.println("fffffffffffffffffffffff");
+    }
+
+}
