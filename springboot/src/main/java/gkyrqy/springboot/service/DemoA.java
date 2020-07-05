@@ -20,6 +20,6 @@ public class DemoA implements Demo , BeanNameAware {
 
     @Override
     public void setBeanName(String s) {
-        System.out.println("fffffffffffffffffffffff");
+        System.out.println("set DemoA BeanName");
     }
 }

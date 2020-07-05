@@ -1,6 +1,7 @@
 package gkyrqy.springboot.config;
 
 import gkyrqy.springboot.service.Person;
+import gkyrqy.springboot.service.UnifiedMetaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +14,11 @@ public class ConfigurationDemo1 {
         person.setAge(11);
         return person;
     }
+    @Bean("unifiedMetaProperties")
+    public UnifiedMetaProperties metaBeanFactory() {
+        return UnifiedMetaProperties.getInstance();
+    }
+
 
 
 }
