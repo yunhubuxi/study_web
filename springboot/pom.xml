@@ -45,12 +45,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
-            <!--            因为我的项目里存在两个main函数的springboot项目，所以用spring-boot-maven-plugin打包的时候 会报错-->
-            <!--            repackage failed: Unable to find a single main class from the following candidates [gkyrqy.springboot.SpringApplicationDemo, gkyrqy.springboot.SpringbootApplication]-->
-            <!--            所以先注释掉，不影响调试运行-->
+            <!-- 因为我的项目里存在两个main函数的springboot项目，所以用spring-boot-maven-plugin打包的时候 会报错-->
+            <!-- repackage failed: Unable to find a single main class from the following candidates [gkyrqy.springboot.SpringApplicationDemo, gkyrqy.springboot.SpringbootApplication]-->
+            <!-- 所以先注释掉，不影响调试运行-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

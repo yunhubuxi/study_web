@@ -1,6 +1,10 @@
-package aop;
+package gkyrqy.springboot.aop;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TestBean {
+
     private String testStr = "testStr";
 
     public void test() {

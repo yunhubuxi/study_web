@@ -16,5 +16,6 @@
     <dubbo:service interface="api.DemoService" ref="demoService" scope="remote"/>
 
     <!-- 和本地bean一样实现服务 -->
-    <bean id="demoService" class="provider.DemoServiceImpl"/>
+    <!--  添加prototype没有用，说明dubbo并不是每次从spring容器中取对象，debug可以看出ServiceBean直接持有demoServiceImpl对象的引用  -->
+    <bean id="demoService" class="provider.DemoServiceImpl" scope="singleton"/>
 </beans>
