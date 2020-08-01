@@ -14,9 +14,8 @@ public class SpringApplicationSample {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringApplicationSample.class);
         System.out.println(SpringApplicationSample.class.getResource("/"));
         applicationContext.getBean(TestBean.class).test();
-        System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTest());
-        System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTestTwo());
         System.out.println(applicationContext.getBean(AuthorServer.class).getAuthor());
         System.out.println(applicationContext.getBean(AuthorProperties.class).toString());
+        System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTest());
     }
 }
