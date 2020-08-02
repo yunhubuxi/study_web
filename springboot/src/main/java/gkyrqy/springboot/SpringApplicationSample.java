@@ -2,13 +2,18 @@ package gkyrqy.springboot;
 
 import author.AuthorProperties;
 import author.AuthorServer;
+import gkyrqy.test.scan.Demo;
 import gkyrqy.springboot.aop.TestBean;
 import gkyrqy.springboot.service.BaseDemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = {
+                "gkyrqy.test.scan",
+                "gkyrqy.springboot.aop",
+                "gkyrqy.springboot.service"})
 public class SpringApplicationSample {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringApplicationSample.class);
@@ -17,5 +22,6 @@ public class SpringApplicationSample {
         System.out.println(applicationContext.getBean(AuthorServer.class).getAuthor());
         System.out.println(applicationContext.getBean(AuthorProperties.class).toString());
         System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTest());
+        System.out.println(applicationContext.getBean(Demo.class));
     }
 }
