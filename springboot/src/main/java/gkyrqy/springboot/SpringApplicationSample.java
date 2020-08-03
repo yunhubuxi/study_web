@@ -12,6 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication(
         scanBasePackages = {
                 "gkyrqy.test.scan",
+                "gkyrqy.springboot.importconfig",
                 "gkyrqy.springboot.aop",
                 "gkyrqy.springboot.service"})
 public class SpringApplicationSample {
@@ -22,6 +23,9 @@ public class SpringApplicationSample {
         System.out.println(applicationContext.getBean(AuthorServer.class).getAuthor());
         System.out.println(applicationContext.getBean(AuthorProperties.class).toString());
         System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTest());
-        System.out.println(applicationContext.getBean(Demo.class));
+        System.out.println(applicationContext.getBean(Demo.class).toString());
+        for (String beanDefinitionName : applicationContext.getBeanFactory().getBeanDefinitionNames()) {
+            System.out.println(beanDefinitionName);
+        }
     }
 }

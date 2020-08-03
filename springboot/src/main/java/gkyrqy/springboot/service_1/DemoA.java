@@ -1,9 +1,7 @@
 package gkyrqy.springboot.service_1;
 
-import gkyrqy.springboot.interface1.Demo;
+import gkyrqy.springboot.interface_1.Demo;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 
 public class DemoA implements Demo {
 

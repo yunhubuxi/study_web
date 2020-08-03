@@ -1,6 +1,6 @@
 package gkyrqy.springboot.service;
 
-import gkyrqy.springboot.interface1.DemoTwo;
+import gkyrqy.springboot.interface_1.DemoTwo;
 
 public class DemoTwoImpl implements DemoTwo {
     @Override
