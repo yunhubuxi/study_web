@@ -25,5 +25,6 @@
         <module>springboot-mybatis</module>
         <module>springcloud</module>
         <module>flink</module>
+        <module>kafka</module>
     </modules>
 </project>
