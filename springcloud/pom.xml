@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springcloud</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>spring-cloud-server</module>
+        <module>hystrix-in-action</module>
+    </modules>
 
 
 </project>
