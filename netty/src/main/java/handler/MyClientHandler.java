@@ -3,6 +3,7 @@ package handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:49.
  */
-public class MyClientHandler extends ChannelHandlerAdapter {
+public class MyClientHandler extends ChannelInboundHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         try {

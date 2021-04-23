@@ -3,6 +3,7 @@ package handler;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:21.
  */
-public class MyServerHandler1 extends ChannelHandlerAdapter  {
+public class MyServerHandler1 extends ChannelInboundHandlerAdapter  {
 
     static int count = 1;
 
