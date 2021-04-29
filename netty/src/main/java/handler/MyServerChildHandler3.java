@@ -2,16 +2,15 @@ package handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.*;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:21.
  */
-public class MyServerChildHandler2 extends ChannelOutboundHandlerAdapter {
+public class MyServerChildHandler3 extends ChannelDuplexHandler {
 
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channelRegistered");
@@ -29,12 +28,7 @@ public class MyServerChildHandler2 extends ChannelOutboundHandlerAdapter {
         //向客户端写信息
         String name = "你好客户端：这是服务端返回的信息!";
         ctx.writeAndFlush(Unpooled.copiedBuffer(name.getBytes()));
-    }
 
-    @Override
-    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        System.out.println("fsdfsdfsdf;laksjdf;laksjdlfkajsd;lfjk");
-        ctx.write(msg, promise);
     }
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

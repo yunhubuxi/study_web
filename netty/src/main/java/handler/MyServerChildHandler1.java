@@ -1,7 +1,8 @@
 package handler;
 
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
 
 import java.time.LocalDateTime;
 
@@ -10,9 +11,13 @@ import java.time.LocalDateTime;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:21.
  */
-public class MyServerChildHandler1 extends ChannelHandlerAdapter {
+public class MyServerChildHandler1 extends ChannelInboundHandlerAdapter {
     static int count = 1;
 
+
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channelRegistered");
+    }
     /***
      * 这里我们覆盖了chanelRead()事件处理方法。
      * 每当从客户端收到新的数据时，

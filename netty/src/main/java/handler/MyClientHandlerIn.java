@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:49.
  */
-public class MyClientHandler extends ChannelInboundHandlerAdapter {
+public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         try {

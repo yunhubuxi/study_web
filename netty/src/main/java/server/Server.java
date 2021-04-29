@@ -2,6 +2,7 @@ package server;
 
 import handler.MyServerChildHandler1;
 import handler.MyServerChildHandler2;
+import handler.MyServerChildHandler3;
 import handler.MyServerHandler1;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -38,7 +39,7 @@ public class Server {
 
             @Override
             protected void initChannel(SocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new MyServerChildHandler1()).addLast(new MyServerChildHandler2());//
+                ch.pipeline().addLast(new MyServerChildHandler1()).addLast(new MyServerChildHandler2()).addLast(new MyServerChildHandler3());//
             }
         });
 //        ServerBootstrap a = new ServerBootstrap().group(bossGroup, workerGroup)
@@ -57,9 +58,9 @@ public class Server {
             //绑定端口并启动去接收进来的连接
 //            ChannelFuture af = a.bind(9999).sync();
             ChannelFuture bf = b.bind(8888).sync();
-            ChannelFuture bf1 = b.bind(8889).sync();
-            ChannelFuture bf2 = b.bind(8890).sync();
-            ChannelFuture bf3 = b.bind(8891).sync();
+            // ChannelFuture bf1 = b.bind(8889).sync();
+            // ChannelFuture bf2 = b.bind(8890).sync();
+            // ChannelFuture bf3 = b.bind(8891).sync();
             // 这里会一直等待，直到socket被关闭
 //            af.channel().closeFuture().sync();
             bf.channel().closeFuture().sync();
