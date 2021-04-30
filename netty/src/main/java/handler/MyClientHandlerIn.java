@@ -34,7 +34,7 @@ public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("MyClientHandlerIn=channelActive");
         System.err.println("MyClientHandlerIn active="+ctx.pipeline().names());
-        ctx.fireChannelActive();
+        ctx.read();
     }
 
     @Override
