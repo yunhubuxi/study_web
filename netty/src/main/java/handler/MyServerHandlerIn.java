@@ -12,9 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:21.
  */
-public class MyServerHandler1 extends ChannelInboundHandlerAdapter  {
-
-    static int count = 1;
+public class MyServerHandlerIn extends ChannelInboundHandlerAdapter  {
 
     /***
      * 这里我们覆盖了chanelRead()事件处理方法。

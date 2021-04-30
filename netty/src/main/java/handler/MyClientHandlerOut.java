@@ -10,15 +10,17 @@ import io.netty.channel.ChannelPromise;
  */
 public class MyClientHandlerOut extends ChannelOutboundHandlerAdapter {
 
+    public void read(ChannelHandlerContext ctx) {
+        System.out.println("MyClientHandlerOut=channel read");
+        System.err.println("MyClientHandlerIn read ="+ctx.pipeline().names());
+        ctx.read();
+    }
 
     @Override
-    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) {
-        System.out.println("channel wirte");
+    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
+        System.out.println("MyClientHandlerOut=channel wirte");
+        System.err.println("MyClientHandlerIn write ="+ctx.pipeline().names());
+        super.write(ctx,msg,promise);
     }
-
-    public void read(ChannelHandlerContext ctx) {
-        System.out.println("channel read");
-    }
-
 
 }

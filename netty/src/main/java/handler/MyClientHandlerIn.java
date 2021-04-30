@@ -21,6 +21,7 @@ public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
             ByteBuf m = (ByteBuf) msg; // ByteBuf是netty提供的
             System.out.println(LocalDateTime.now().toString());
             System.out.println("client:"+m.toString(CharsetUtil.UTF_8));
+            System.err.println("MyClientHandlerIn read ="+ctx.pipeline().names());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -31,7 +32,8 @@ public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
     }
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channelActive");
+        System.out.println("MyClientHandlerIn=channelActive");
+        System.err.println("MyClientHandlerIn active="+ctx.pipeline().names());
         ctx.fireChannelActive();
     }
 

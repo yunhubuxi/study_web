@@ -12,8 +12,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
 
 /**
  * Created by 敲代码的卡卡罗特
@@ -21,40 +19,29 @@ import io.netty.util.concurrent.GenericFutureListener;
  */
 public class Client {
 
-    public static void main(String[] arg){
+    public static void main(String[] arg) {
         /**
          * 如果你只指定了一个EventLoopGroup，
          * 那他就会即作为一个‘boss’线程，
          * 也会作为一个‘workder’线程，
          * 尽管客户端不需要使用到‘boss’线程。
          */
-        Bootstrap b = new Bootstrap(); // (1)
+        Bootstrap b = new Bootstrap();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        b.group(workerGroup); // (2)
-        b.channel(NioSocketChannel.class); // (3)
-        b.option(ChannelOption.SO_KEEPALIVE, true); // (4)
+        b.group(workerGroup);
+        b.channel(NioSocketChannel.class);
+        b.option(ChannelOption.SO_KEEPALIVE, true);
         b.handler(new ChannelInitializer<SocketChannel>() {
             @Override
-            public void initChannel(SocketChannel ch) throws Exception {
+            public void initChannel(SocketChannel ch) {
                 ch.pipeline().addLast(new MyClientHandlerIn()).addLast(new MyClientHandlerOut());
             }
         });
-
         try {
             ChannelFuture f = b.connect("127.0.0.1", 8888).sync();
             //向服务端发送信息
             f.channel().writeAndFlush(Unpooled.copiedBuffer("Client".getBytes()));
-            f.addListener(new GenericFutureListener() {
-                @Override
-                public void operationComplete(Future future) throws Exception {
-                    System.out.println("ffsdfs");
-                    f.channel().isActive();
-                }
-            });
-
-            ChannelFuture sync = f.channel().closeFuture().sync();
-            System.out.println("aaa");
-            System.out.println(sync.toString());
+            f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
