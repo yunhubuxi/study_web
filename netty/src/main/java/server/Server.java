@@ -1,8 +1,9 @@
 package server;
 
-import handler.MyServerChildHandler1;
-import handler.MyServerChildHandler2;
-import handler.MyServerHandler1;
+import handler.MyServerChildHandlerIn;
+import handler.MyServerChildHandlerOut;
+import handler.MyServerChildHandlerDuplex;
+import handler.MyServerHandlerIn;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -18,50 +19,26 @@ public class Server {
         //boss线程监听端口，worker线程负责数据读写
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        //服务类
         ServerBootstrap b = new ServerBootstrap();
         b = b.group(bossGroup, workerGroup);
         b = b.option(ChannelOption.SO_BACKLOG, 128);
         b = b.childOption(ChannelOption.SO_KEEPALIVE, true);
-        //设置niosocket工厂
         b.channel(NioServerSocketChannel.class);
         b.handler(new ChannelInitializer<NioServerSocketChannel>() {
-//            final EventLoopGroup group = new DefaultEventLoopGroup(16);
-
             @Override
-            protected void initChannel(NioServerSocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new MyServerHandler1());
+            protected void initChannel(NioServerSocketChannel ch) {
+                ch.pipeline().addLast(new MyServerHandlerIn());
             }
         });
         b.childHandler(new ChannelInitializer<SocketChannel>() {
-            final EventLoopGroup group = new DefaultEventLoopGroup(16);
 
             @Override
-            protected void initChannel(SocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new MyServerChildHandler1()).addLast(new MyServerChildHandler2());//
+            protected void initChannel(SocketChannel ch) {
+                ch.pipeline().addLast(new MyServerChildHandlerIn()).addLast(new MyServerChildHandlerOut()).addLast(new MyServerChildHandlerDuplex());//
             }
         });
-//        ServerBootstrap a = new ServerBootstrap().group(bossGroup, workerGroup)
-//                .option(ChannelOption.SO_BACKLOG, 128)
-//                .childOption(ChannelOption.SO_KEEPALIVE, true)
-//                .channel(NioServerSocketChannel.class)
-//                .handler(new MyServerHandlerHandle()).childHandler(new ChannelInitializer<SocketChannel>() {
-//                    final EventLoopGroup group = new DefaultEventLoopGroup(16);
-//
-//                    @Override
-//                    protected void initChannel(SocketChannel ch) throws Exception {
-//                        ch.pipeline().addLast(group, new MyServerHandler());//
-//                    }
-//                });
         try {
-            //绑定端口并启动去接收进来的连接
-//            ChannelFuture af = a.bind(9999).sync();
             ChannelFuture bf = b.bind(8888).sync();
-            ChannelFuture bf1 = b.bind(8889).sync();
-            ChannelFuture bf2 = b.bind(8890).sync();
-            ChannelFuture bf3 = b.bind(8891).sync();
-            // 这里会一直等待，直到socket被关闭
-//            af.channel().closeFuture().sync();
             bf.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

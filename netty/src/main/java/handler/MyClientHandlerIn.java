@@ -3,6 +3,7 @@ package handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  * Created by 敲代码的卡卡罗特
  * on 2018/8/12 21:49.
  */
-public class MyClientHandler extends ChannelHandlerAdapter {
+public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         try {
@@ -20,6 +21,7 @@ public class MyClientHandler extends ChannelHandlerAdapter {
             ByteBuf m = (ByteBuf) msg; // ByteBuf是netty提供的
             System.out.println(LocalDateTime.now().toString());
             System.out.println("client:"+m.toString(CharsetUtil.UTF_8));
+            System.err.println("MyClientHandlerIn read ="+ctx.pipeline().names());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -30,8 +32,9 @@ public class MyClientHandler extends ChannelHandlerAdapter {
     }
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channelActive");
-        ctx.fireChannelActive();
+        System.out.println("MyClientHandlerIn=channelActive");
+        System.err.println("MyClientHandlerIn active="+ctx.pipeline().names());
+        ctx.read();
     }
 
     @Override
