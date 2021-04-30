@@ -2,6 +2,7 @@ package client;
 
 
 import handler.MyClientHandlerIn;
+import handler.MyClientHandlerInTest;
 import handler.MyClientHandlerOut;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
@@ -34,7 +35,7 @@ public class Client {
         b.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             public void initChannel(SocketChannel ch) {
-                ch.pipeline().addLast(new MyClientHandlerIn()).addLast(new MyClientHandlerOut());
+                ch.pipeline().addLast(new MyClientHandlerIn()).addLast(new MyClientHandlerInTest()).addLast(new MyClientHandlerOut());
             }
         });
         try {
