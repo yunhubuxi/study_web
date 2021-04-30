@@ -8,7 +8,7 @@ public class TestBean {
     private String testStr = "testStr";
 
     public void test() {
-        System.out.println("test");
+        System.out.println("test_test");
     }
 
     public String getTestStr() {

@@ -24,8 +24,11 @@ public class SpringApplicationSample {
         System.out.println(applicationContext.getBean(AuthorProperties.class).toString());
         System.out.println(applicationContext.getBean(BaseDemo.class).getBaseTest());
         System.out.println(applicationContext.getBean(Demo.class).toString());
-        for (String beanDefinitionName : applicationContext.getBeanFactory().getBeanDefinitionNames()) {
-            System.out.println(beanDefinitionName);
-        }
+        System.out.println(applicationContext.getBean(Demo.class).demoNameAware.toString());
+        System.out.println(applicationContext.getBean(Demo.class).beanFactory.getBean("demo"));
+        System.out.println(applicationContext.getBean(Demo.class).demoTwo.toString());
+        // for (String beanDefinitionName : applicationContext.getBeanFactory().getBeanDefinitionNames()) {
+        //     System.out.println(beanDefinitionName);
+        // }
     }
 }
