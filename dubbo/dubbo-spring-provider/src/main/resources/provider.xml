@@ -11,6 +11,8 @@
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
+    <dubbo:provider server="netty4"/>
+
     <!-- 声明需要暴露的服务接口 -->
     <!-- scope = none，不导出服务；scope != remote，导出到本地；scope != local，导出到远程-->
     <dubbo:service interface="api.DemoService" ref="demoService" scope="remote"/>
