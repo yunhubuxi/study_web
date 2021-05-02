@@ -15,7 +15,7 @@
  */
 package server;
 
-import handler.server.EchoServerHandler;
+import handler.echo.EchoServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

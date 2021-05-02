@@ -15,7 +15,7 @@
  */
 package client;
 
-import handler.client.EchoClientHandler;
+import handler.echo.EchoClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
