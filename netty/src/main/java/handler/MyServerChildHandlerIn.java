@@ -27,7 +27,7 @@ public class MyServerChildHandlerIn extends ChannelInboundHandlerAdapter {
      */
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         System.out.println("MyServerChildHandlerIn ：" + count++);
-        System.err.println("MyServerChildHandlerIn read = "+ctx.pipeline().names());
+        System.out.println("MyServerChildHandlerIn read = "+ctx.pipeline().names());
         ctx.fireChannelRead(msg);
     }
 

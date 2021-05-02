@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.DefaultChannelPipeline;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
@@ -20,21 +21,24 @@ public class MyClientHandlerIn extends ChannelInboundHandlerAdapter {
             //读取服务端发来的信息
             ByteBuf m = (ByteBuf) msg; // ByteBuf是netty提供的
             System.out.println(LocalDateTime.now().toString());
-            System.out.println("client:"+m.toString(CharsetUtil.UTF_8));
-            System.err.println("MyClientHandlerIn read ="+ctx.pipeline().names());
+            System.out.println("MyClientHandlerIn client:"+m.toString(CharsetUtil.UTF_8));
+            // System.err.println("MyClientHandlerIn read ="+ctx.pipeline().names());
+            ctx.fireChannelRead(msg);
+            ctx.fireChannelReadComplete();
+            ctx.pipeline().fireChannelReadComplete();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             //当没有写操作的时候要把msg给清空。如果有写操作，就不用清空，因为写操作会自动把msg清空。这是netty的特性。
-            ReferenceCountUtil.release(msg);
+            // ReferenceCountUtil.release(msg);
         }
 
     }
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("MyClientHandlerIn=channelActive");
-        System.err.println("MyClientHandlerIn active="+ctx.pipeline().names());
-        ctx.read();
+        // System.err.println("MyClientHandlerIn active="+ctx.pipeline().names());
+        // ctx.read();
     }
 
     @Override

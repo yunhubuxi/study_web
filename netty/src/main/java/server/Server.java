@@ -1,9 +1,6 @@
 package server;
 
-import handler.MyServerChildHandlerIn;
-import handler.MyServerChildHandlerOut;
-import handler.MyServerChildHandlerDuplex;
-import handler.MyServerHandlerIn;
+import handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -34,7 +31,12 @@ public class Server {
 
             @Override
             protected void initChannel(SocketChannel ch) {
-                ch.pipeline().addLast(new MyServerChildHandlerIn()).addLast(new MyServerChildHandlerOut()).addLast(new MyServerChildHandlerDuplex());//
+                ch.pipeline()
+                        .addLast(new MyServerChildHandlerIn())
+                        .addLast(new MyServerChildHandlerInTest())
+                        .addLast(new MyServerChildHandlerOut())
+                        .addLast(new MyServerChildHandlerOutTest())
+                        .addLast(new MyServerChildHandlerDuplex());//
             }
         });
         try {

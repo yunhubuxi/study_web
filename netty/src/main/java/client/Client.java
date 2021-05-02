@@ -4,6 +4,7 @@ package client;
 import handler.MyClientHandlerIn;
 import handler.MyClientHandlerInTest;
 import handler.MyClientHandlerOut;
+import handler.MyClientHandlerOutTest;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -35,7 +36,12 @@ public class Client {
         b.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             public void initChannel(SocketChannel ch) {
-                ch.pipeline().addLast(new MyClientHandlerIn()).addLast(new MyClientHandlerInTest()).addLast(new MyClientHandlerOut());
+                ch.config().setAutoClose(false);
+                ch.pipeline()
+                        .addLast(new MyClientHandlerIn())
+                        .addLast(new MyClientHandlerInTest())
+                        .addLast(new MyClientHandlerOut())
+                        .addLast(new MyClientHandlerOutTest());
             }
         });
         try {
