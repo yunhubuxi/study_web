@@ -12,5 +12,5 @@
     <dubbo:registry address="N/A"/>
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" interface="api.DemoService" url="dubbo://localhost:20880" timeout="1000000" client="netty4"/>
+    <dubbo:reference id="demoService" interface="api.DemoService" url="dubbo://localhost:20880" timeout="1000000" client="netty4" async="true"/>
 </beans>
