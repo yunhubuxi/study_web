@@ -1,6 +1,6 @@
 package gkyrqy.springboot.service;
 
-import gkyrqy.springboot.interface_1.Demo;
+import gkyrqy.springboot.interface1.Demo;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 

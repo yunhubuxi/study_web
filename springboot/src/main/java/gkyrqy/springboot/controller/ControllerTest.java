@@ -1,6 +1,6 @@
 package gkyrqy.springboot.controller;
 
-import gkyrqy.springboot.interface_1.Demo;
+import gkyrqy.springboot.interface1.Demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;

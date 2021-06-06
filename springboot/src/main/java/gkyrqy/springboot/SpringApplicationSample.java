@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Iterator;
+
 @SpringBootApplication(
         scanBasePackages = {
                 "gkyrqy.test.scan",
@@ -27,8 +29,12 @@ public class SpringApplicationSample {
         System.out.println(applicationContext.getBean(Demo.class).demoNameAware.toString());
         System.out.println(applicationContext.getBean(Demo.class).beanFactory.getBean("demo"));
         System.out.println(applicationContext.getBean(Demo.class).demoTwo.toString());
-        // for (String beanDefinitionName : applicationContext.getBeanFactory().getBeanDefinitionNames()) {
-        //     System.out.println(beanDefinitionName);
-        // }
+        System.out.println("==========================================");
+        System.out.println(applicationContext.getBeanFactory().getBeanDefinitionNames().length);
+        System.out.println(applicationContext.getBeanDefinitionCount());
+        Iterator<String> beanNamesIterator = applicationContext.getBeanFactory().getBeanNamesIterator();
+        while (beanNamesIterator.hasNext()) {
+            System.out.println(beanNamesIterator.next());
+        }
     }
 }

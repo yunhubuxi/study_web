@@ -32,7 +32,7 @@
 //         System.out.println(authorServer.getAuthor());
 //         DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) applicationContext.getAutowireCapableBeanFactory();
 //         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(
-//             gkyrqy.springboot.service_1.DemoA.class);
+//             gkyrqy.springboot.service1.DemoA.class);
 //         defaultListableBeanFactory.removeBeanDefinition("demoA");
 //         defaultListableBeanFactory.registerBeanDefinition("demoA",
 //             beanDefinitionBuilder.getBeanDefinition());

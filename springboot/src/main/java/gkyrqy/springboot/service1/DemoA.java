@@ -1,6 +1,6 @@
-package gkyrqy.springboot.service_1;
+package gkyrqy.springboot.service1;
 
-import gkyrqy.springboot.interface_1.Demo;
+import gkyrqy.springboot.interface1.Demo;
 import org.springframework.beans.factory.annotation.Value;
 
 public class DemoA implements Demo {
